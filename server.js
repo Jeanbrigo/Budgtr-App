@@ -2,9 +2,9 @@ const express = require('express'); // backend framework
 const app = express();
 const budgets = require("./models/budgets")
 app.use("/static", express.static("public"));
-const jsonParser = express.json()
-app.use(jsonParser);
+app.use(express.urlencoded({extended:true}))
 const PORT = 3000;
+const methodOverride = require("method-override") // import method override
 
 // Index Route
 app.get('/budgets', (req,res)=>{
@@ -18,6 +18,12 @@ app.get('/budgets', (req,res)=>{
 app.get('/budgets/new', (req, res) => {
     res.render('new.ejs');
 });
+
+app.post('/budgets', (req,res)=>{
+    budgets.push(req.body);
+    res.redirect("/budgets") // redirect back to index page
+})
+
 
 // Show Route
 
