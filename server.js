@@ -14,9 +14,12 @@ app.get('/budgets', (req,res)=>{
 
 // Show Route
 
-// app.get("/budgets/:index", (req,res)=>{
-//     res.render("show.ejs");
-// });
+app.get("/budgets/:index", (req,res)=>{
+    res.render("show.ejs", {
+        allBudget:budgets,
+        index: req.params.index
+    });
+});
 
 // New Route
 
