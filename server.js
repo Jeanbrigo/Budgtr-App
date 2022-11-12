@@ -2,6 +2,8 @@ const express = require('express'); // backend framework
 const app = express();
 const budgets = require("./models/budgets")
 app.use("/static", express.static("public"));
+const jsonParser = express.json()
+app.use(jsonParser);
 const PORT = 3000;
 
 // Index Route
@@ -10,6 +12,11 @@ app.get('/budgets', (req,res)=>{
     {
         allBudget:budgets
     });
+});
+
+// New Route
+app.get('/budgets/new', (req, res) => {
+    res.render('new.ejs');
 });
 
 // Show Route
@@ -21,7 +28,6 @@ app.get("/budgets/:index", (req,res)=>{
     });
 });
 
-// New Route
 
 
 // Create Route
