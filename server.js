@@ -6,6 +6,10 @@ app.use(express.urlencoded({extended:true}))
 const PORT = 3000;
 const methodOverride = require("method-override") // import method override
 
+app.get("/", (req,res)=>{
+    res.redirect('/budgets')
+})
+
 // Index Route
 app.get('/budgets', (req,res)=>{
     res.render('index.ejs', 
@@ -19,11 +23,11 @@ app.get('/budgets/new', (req, res) => {
     res.render('new.ejs');
 });
 
+// New Item Post Route
 app.post('/budgets', (req,res)=>{
     budgets.push(req.body);
     res.redirect("/budgets") // redirect back to index page
 })
-
 
 // Show Route
 
@@ -33,11 +37,6 @@ app.get("/budgets/:index", (req,res)=>{
         index: req.params.index
     });
 });
-
-
-
-// Create Route
-
 
 
 app.listen(PORT, () => {
