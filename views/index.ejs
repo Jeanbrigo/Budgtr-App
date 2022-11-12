@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <%- include("./partials/head.ejs") %>
+<body>
+    
+    <div class="container">
+        <h1>Budgtr ALL</h1>
+        <table>
+            
+        <% for(let i = 0; i < allBudget.length; i++) { %>
+            <tr>
+                <td>
+                <%=allBudget[i].date %>
+                </td>
+                <td>
+                    <a href="/budgets/<%=i%>"><%=allBudget[i].name %></a>
+                    </td>
+                    <td>
+                        <%=allBudget[i].from %>
+                        </td>
+                        <td>
+                            <%=allBudget[i].amount %>
+                            </td>
+
+                    <td>
+                    <%=allBudget[i].tags %>
+                    </td>
+            </tr>
+        
+        <% } %>
+            
+        </table>
+       
+            
+    </div>
+
+</body>
+</html>
