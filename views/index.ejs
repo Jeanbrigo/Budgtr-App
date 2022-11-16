@@ -2,9 +2,10 @@
 <html lang="en">
     <%- include("./partials/head.ejs") %>
 <body>
-    
     <div class="container">
         <h1>Budgtr ALL</h1>
+        <% const fullAmount = allBudget.reduce((a, b) => a + parseInt(b.amount), 0)%>
+        <h2>Bank Account: $ <%=fullAmount%></h2>
         <table>
             <a href="/budgets/new">Add a budget item</a>
         <% for(let i = 0; i < allBudget.length; i++) { %>
@@ -30,9 +31,12 @@
         <% } %>
             
         </table>
-       
+
             
     </div>
 
 </body>
+<script>
+if(<%=fullAmount%> < 0){document.body.style.backgroundColor = "red";} else if(<%=fullAmount%>  > 1000){document.body.style.backgroundColor = "green";}
+</script>
 </html>
